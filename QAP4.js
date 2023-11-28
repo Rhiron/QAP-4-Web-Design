@@ -13,8 +13,11 @@ let Motel_Cust = {
         Zip: "A2H1K0"
     },
     Phone_Number: "709-640-9820", // The customer’s phone number
-    Check_In_Date: new Date(2023, 1, 1), // The customer’s check-in date (sub-object)
-    Check_Out_Date: new Date(2023, 1, 5), // The customer’s check-out date (sub-object)
+    
+    dates: { // The customer’s check-in and check-out date (sub-object)
+        Check_In_Date: new Date(2023, 1, 1),
+        Check_Out_Date: new Date(2023, 1, 5)
+    },
     // Object method to determine their age
     Get_Age: function() {
         let today = new Date();
@@ -27,7 +30,7 @@ let Motel_Cust = {
     },
     // Object method to determine their duration of stay
     Get_Duration_Of_Stay: function() {
-        let diffTime = Math.abs(this.Check_Out_Date - this.Check_In_Date);
+        let diffTime = Math.abs(this.dates.Check_Out_Date - this.dates.Check_In_Date);
         let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
         return diffDays; 
     }
